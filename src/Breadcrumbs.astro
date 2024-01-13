@@ -15,7 +15,7 @@ interface BreadcrumbItem {
 }
 
 const {
-  indexText = "Home",
+  indexText = "",
   mainBemClass = "c-breadcrumbs",
   ariaLabel = "breadcrumbs",
   crumbs = [],
@@ -160,13 +160,6 @@ const schemaJson = JSON.stringify({
   })),
 });
 ---
-
-<nav aria-label={ariaLabel} class={mainBemClass}>
-  <ol
-    class={`${mainBemClass}__crumbs${
-      Astro.slots.has("separator") ? " has-separators" : " has-no-separators"
-    }`}
-  >
     {
       parts.map(({ text, ...attrs }, index, array) => (
         <li class={`${mainBemClass}__crumb`}>
@@ -197,8 +190,6 @@ const schemaJson = JSON.stringify({
         </li>
       ))
     }
-  </ol>
-</nav>
 {
   schemaJsonScript && (
     <script type="application/ld+json" set:html={schemaJson} />
